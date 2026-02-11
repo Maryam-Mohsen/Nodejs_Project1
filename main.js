@@ -1,5 +1,24 @@
-let users = [];
-
+let users = [
+  {
+    name: "Moataz",
+    email: "Moataz@example.com",
+    age: 25,
+    specialty: "Backend",
+  },
+  {
+    name: "Sara",
+    email: "sara@example.com",
+    age: 28,
+    specialty: "Frontend",
+  },
+  {
+    name: "Maryam",
+    email: "maryam@example.com",
+    age: 26,
+    specialty: "Fullstack",
+  },
+];
+displayUsers();
 let msg = document.getElementById("msg");
 document.getElementById("addUser").onclick = addUser;
 document.getElementById("cancel").onclick = cancelInputs;
@@ -83,7 +102,7 @@ function editUser(index) {
 
 function saveEdit() {
   if (editIndex !== null) {
-  let name = document.getElementById("name").value;
+    let name = document.getElementById("name").value;
     let email = document.getElementById("email").value;
     let age = document.getElementById("age").value;
     let specialty = document.getElementById("specialty").value;
