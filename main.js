@@ -20,7 +20,7 @@ function addUser() {
         age: age,
         specialty: specialty
     }
-
+msg.innerText = "User added successfully!";
     users.push(user)
     displayUsers()
 }
@@ -46,3 +46,4 @@ function cancelInputs() {
     document.getElementById('age').value = ""
     document.getElementById('specialty').value = ""
 }
+
