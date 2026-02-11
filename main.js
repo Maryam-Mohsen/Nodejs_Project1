@@ -74,23 +74,32 @@ function editUser(index) {
   document.getElementById("email").value = user.email;
   document.getElementById("age").value = user.age;
   document.getElementById("specialty").value = user.specialty;
-
   let addBtn = document.getElementById("addUser");
   addBtn.innerText = "Save Changes";
   addBtn.onclick = () => {
     saveEdit();
-    msg.innerText = "User edited successfully!";
   };
 }
 
 function saveEdit() {
   if (editIndex !== null) {
+  let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let age = document.getElementById("age").value;
+    let specialty = document.getElementById("specialty").value;
+
+    if (name === "" || email === "" || age === "" || specialty === "") {
+      msg.innerText = "Please fill all fields before saving";
+      return;
+    }
+
     users[editIndex] = {
-      name: document.getElementById("name").value,
-      email: document.getElementById("email").value,
-      age: document.getElementById("age").value,
-      specialty: document.getElementById("specialty").value,
+      name: name,
+      email: email,
+      age: age,
+      specialty: specialty,
     };
+    msg.innerText = "User edited successfully!";
     editIndex = null;
     document.getElementById("addUser").innerText = "Add User";
     document.getElementById("addUser").onclick = addUser;
@@ -100,24 +109,26 @@ function saveEdit() {
 }
 
 document.getElementById("search").oninput = function () {
-  let searchValue = this.value;
-  let filteredUsers = users.filter(
-    (user) =>
-      user.name.includes(searchValue) || user.email.includes(searchValue),
-  );
-
-  renderFilteredUsers(filteredUsers);
+  filter();
 };
 
 document.getElementById("select").onchange = function () {
-  let filterValue = this.value;
-  if (filterValue === "all") {
-    displayUsers();
-  } else {
-    let filteredUsers = users.filter((user) => user.specialty == filterValue);
-    renderFilteredUsers(filteredUsers);
-  }
+  filter();
 };
+
+function filter() {
+  let searchValue = document.getElementById("search").value.toLowerCase();
+  let filterValue = document.getElementById("select").value;
+
+  let filteredUsers = users.filter((user) => {
+    let matchesSearch = user.name.toLowerCase().includes(searchValue) || user.email.toLowerCase().includes(searchValue);
+    let matchesSelect = filterValue === "all" || user.specialty === filterValue;
+
+    return matchesSearch && matchesSelect; 
+  });
+
+  renderFilteredUsers(filteredUsers);
+}
 
 function renderFilteredUsers(filteredData) {
   let tbody = document.getElementById("tbody");
