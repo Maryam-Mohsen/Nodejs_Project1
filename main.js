@@ -2,7 +2,7 @@ let users = [
   {
     name: "Moataz",
     email: "Moataz@example.com",
-    age: 25,
+    age: 19,
     specialty: "Backend",
   },
   {
@@ -174,3 +174,4 @@ function renderFilteredUsers(filteredData) {
     tbody.appendChild(tr);
   });
 }
+
