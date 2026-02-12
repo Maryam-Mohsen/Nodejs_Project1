@@ -163,7 +163,7 @@ function renderFilteredUsers(filteredData) {
   tbody.innerHTML = "";
 
   if (filteredData.length === 0) {
-    tbody.innerHTML = "<tr>No matching users found.</tr>";
+    tbody.innerHTML = `<tr><td colspan="5">No matching users found.</td></tr>`;
     return;
   }
 
@@ -183,5 +183,6 @@ function renderFilteredUsers(filteredData) {
     tbody.appendChild(tr);
   });
 }
+
 
 
