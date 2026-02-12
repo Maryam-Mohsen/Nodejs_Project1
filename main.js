@@ -33,6 +33,15 @@ function addUser() {
     msg.innerText = "Please fill all fields";
     return;
   }
+    if (!email.includes("@") || !email.includes(".")) {
+    msg.innerText = "Invalid email";
+    return;
+  }
+
+    if (age <= 0) {
+      msg.innerText = "Invalid age";
+      return;
+    }
   let user = {
     name: name,
     email: email,
@@ -174,4 +183,5 @@ function renderFilteredUsers(filteredData) {
     tbody.appendChild(tr);
   });
 }
+
 
