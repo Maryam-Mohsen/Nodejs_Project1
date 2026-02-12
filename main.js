@@ -24,9 +24,9 @@ document.getElementById("addUser").onclick = addUser;
 document.getElementById("cancel").onclick = cancelInputs;
 
 function addUser() {
-  let name = document.getElementById("name").value;
-  let email = document.getElementById("email").value;
-  let age = document.getElementById("age").value;
+  let name = document.getElementById("name").value.trim();
+  let email = document.getElementById("email").value.trim();
+  let age = document.getElementById("age").value.trim();
   let specialty = document.getElementById("specialty").value;
 
   if (name === "" || email === "" || age === "" || specialty === "") {
@@ -183,6 +183,7 @@ function renderFilteredUsers(filteredData) {
     tbody.appendChild(tr);
   });
 }
+
 
 
 
